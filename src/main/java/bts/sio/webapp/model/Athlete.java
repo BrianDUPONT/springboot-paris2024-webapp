@@ -13,6 +13,7 @@ public class Athlete {
     private String prenom;
     private LocalDate datenaiss ;
     private Pays pays;
+    private Sport sport;
 
 
 

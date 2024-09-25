@@ -62,11 +62,27 @@
 						<td><span th:text="${athlete.nom}"> Nom </span></td>
 						<!--td><span th:text="${#dates.format(athlete.datenaiss, 'dd-MM-yyyy')}"> Nom </span></td-->
 						<td><span th:text="${#temporals.format(athlete.datenaiss, 'dd-MM-yyyy HH:mm')}"> Nom </span></td>
-						<td><span th:text="${athlete.pays.nom}"> Nom </span></td>
-						<td><span th:text="${athlete.sport.nom}"> Nom </span></td>
 						<td>
-							<a th:href="@{/updateAthlete/{id}(id=${athlete.id})}"><button class="btn btn-info">Modifier</button></a>
-							<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}"><button class="btn btn-danger">Supprimer</button></a>
+							<span th:if="${athlete.pays != null}" th:text="${athlete.pays.nom}"></span>
+							<span th:if="${athlete.pays == null}">Pays non renseigné</span>
+						</td>
+						<td>
+							<span th:if="${athlete.sport != null}" th:text="${athlete.pays.nom}"></span>
+							<span th:if="${athlete.sport == null}">Sport non renseigné</span>
+						</td>						<td>
+							<ul class="liste-olympiades" th:each="olympiade : ${athlete.olympiades}">
+								<span><li th:if="${olympiade != null}" th:text="${olympiade.numero}"></li></span>
+								<span th:if="${olympiade == null}">Olympiade non renseigné</span>
+							</ul>
+						</td>
+
+
+
+						<td>
+							<ul class="liste-actions">
+								<a th:href="@{/updateAthlete/{id}(id=${athlete.id})}"><button class="btn btn-info">Modifier</button></a>
+								<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}"><button class="btn btn-danger">Supprimer</button></a>
+							</ul>
 						</td>
 					</tr>
 				</tbody>

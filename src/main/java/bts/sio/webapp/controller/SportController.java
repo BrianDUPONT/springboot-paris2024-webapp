@@ -18,13 +18,13 @@ public class SportController {
 
 
     @Autowired
-    private SportService sportservice;
+    private SportService sportService;
 
-    @GetMapping("/")
-    public String home(Model model) {
-        Iterable<Sport> listSports = sportservice.getLesSports();
+    @GetMapping("/listerSports")
+    public String listerSports(Model model) {
+        Iterable<Sport> listSports = sportService.getLesSports();
         model.addAttribute("sports", listSports);
-        return "home";
+        return "listerSports";
     }
 
     @GetMapping("/createSport")
@@ -37,7 +37,7 @@ public class SportController {
 
     @GetMapping("/updateSport/{id}")
     public String updateSport(@PathVariable("id") final int id, Model model) {
-        Sport s = sportservice.getSport(id);
+        Sport s = sportService.getSport(id);
         model.addAttribute("sport", s);
 
 
@@ -46,18 +46,14 @@ public class SportController {
 
     @GetMapping("/deleteSport/{id}")
     public ModelAndView deleteSport(@PathVariable("id") final int id) {
-        sportservice.deleteSport(id);
+        sportService.deleteSport(id);
         return new ModelAndView("redirect:/");
     }
 
     @PostMapping("/saveSport")
     public ModelAndView saveSport(@ModelAttribute Sport sport) {
         System.out.println("controller save=" + sport.getNom());
-        if(sport.getId() != null) {
-            Sport current = sportservice.getSport(sport.getId());
-            sport.setNom(current.getNom());
-        }
-        sportservice.saveSport(sport);
-        return new ModelAndView("redirect:/");
+        sportService.saveSport(sport);
+        return new ModelAndView("redirect:/listerSports");
     }
 }

@@ -43,30 +43,19 @@ body {
 
 	<div class="container special">
 
-		<h2 class="h2">Modification d'un sport</h2>
+		<h2 class="h2">Ajout d'une nouvelle epreuve</h2>
 		<div>
 			<form method="post"
-				th:action="@{/saveSport}" th:object="${sport}">
-				<div class="form-group">
-					<input
-						type="hidden" th:field="*{id}" class="form-control">
-				</div>
+				th:action="@{/saveEpreuve}" th:object="${epreuve}">
 				<div class="form-group">
 					<label for="nomInput">Nom</label>
 					<input
-							type="text" th:field="*{nom}" class="form-control" id="nomInput"
-							aria-describedby="nomHelp" placeholder="Saisir le nom"> <small
-						id="nomHelp" class="form-text text-muted">Merci d'écrire le nom du sport.</small>
+						type="text" th:field="*{nom}" class="form-control" id="nomInput"
+						aria-describedby="nomHelp" placeholder="Saisir l'épreuve"> <small
+						id="nomHelp" class="form-text text-muted">Merci d'écrire le nom de l'épreuve.</small>
 				</div>
-				<div class="form-group">
-					<label for="descriptifInput">Descriptif</label>
-					<input
-							type="text" th:field="*{descriptif}" class="form-control" id="firstNameInput"
-							aria-describedby="descriptifHelp" placeholder="Saisir le descriptif"> <small
-						id="descriptifHelp" class="form-text text-muted">Merci d'écrire le descriptif du sport.</small>
-				</div>
-				
-				<button type="submit" class="btn btn-primary">Modifier</button>
+
+				<button type="submit" class="btn btn-primary">Créer</button>
 			</form>
 		</div>
 
@@ -77,7 +66,6 @@ body {
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous">
-	</script>
+		crossorigin="anonymous"></script>
 </body>
 </html>

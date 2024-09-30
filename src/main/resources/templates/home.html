@@ -82,7 +82,9 @@
 						<td>
 							<ul class="liste-actions">
 								<a th:href="@{/updateAthlete/{id}(id=${athlete.id})}"><button class="btn btn-info">Modifier</button></a>
-								<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}"><button class="btn btn-danger">Supprimer</button></a>
+								<a th:href="@{/deleteAthlete/{id}(id=${athlete.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet athlète ?');">
+									<button class="btn btn-danger">Supprimer</button>
+								</a>
 							</ul>
 						</td>
 					</tr>

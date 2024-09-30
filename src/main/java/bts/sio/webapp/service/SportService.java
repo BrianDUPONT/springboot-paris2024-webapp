@@ -11,8 +11,33 @@ import org.springframework.stereotype.Service;
 public class SportService {
 
     @Autowired
-    private SportProxy sportProxy;
+    private SportProxy athleteProxy;
+
+    public Sport getSport(final int id) {
+        return athleteProxy.getSport(id);
+    }
+
     public Iterable<Sport> getLesSports() {
-        return sportProxy.getLesSports();
+        return athleteProxy.getSports();
+    }
+
+    public void deleteSport(final int id) {
+        athleteProxy.deleteSport(id);
+    }
+
+    public Sport saveSport(Sport athlete) {
+        Sport savedSport;
+
+        // Functional rule : Last name must be capitalized.
+        athlete.setNom(athlete.getNom().toUpperCase());
+
+        if(athlete.getId() == null) {
+            // If id is null, then it is a new employee.
+            savedSport = athleteProxy.createSport(athlete);
+        } else {
+            savedSport = athleteProxy.updateSport(athlete);
+        }
+
+        return savedSport;
     }
 }

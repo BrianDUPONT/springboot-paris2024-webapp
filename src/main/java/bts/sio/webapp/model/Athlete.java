@@ -12,10 +12,9 @@ public class Athlete {
     private Integer id;
     private String nom;
     private String prenom;
-    private LocalDate datenaiss ;
+    private LocalDate dateNaiss ;
     private Pays pays;
     private Sport sport;
-    private Olympiade olympiade;
     private List<Olympiade> olympiades;
 
 

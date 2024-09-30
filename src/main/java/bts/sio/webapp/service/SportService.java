@@ -29,7 +29,7 @@ public class SportService {
         Sport savedSport;
 
         // Functional rule : Last name must be capitalized.
-        sport.setNom(sport.getNom().toUpperCase());
+        sport.setNom(sport.getNom());
 
         if(sport.getId() == null) {
             // If id is null, then it is a new employee.

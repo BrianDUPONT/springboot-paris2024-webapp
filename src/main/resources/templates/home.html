@@ -33,6 +33,7 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href=".">Système de gestion des athlètes</a>
+				<a class="navbar-brand" href="listerSports">Système de gestion des sports</a>
 			</div>
 		</div>
 	</nav>
@@ -61,7 +62,7 @@
 						<td><span th:text="${athlete.prenom}"> Prenom </span></td>
 						<td><span th:text="${athlete.nom}"> Nom </span></td>
 						<!--td><span th:text="${#dates.format(athlete.datenaiss, 'dd-MM-yyyy')}"> Nom </span></td-->
-						<td><span th:text="${#temporals.format(athlete.datenaiss, 'dd-MM-yyyy HH:mm')}"> Nom </span></td>
+						<td><span th:text="${#temporals.format(athlete.dateNaiss, 'dd-MM-yyyy')}"> Nom </span></td>
 						<td>
 							<span th:if="${athlete.pays != null}" th:text="${athlete.pays.nom}"></span>
 							<span th:if="${athlete.pays == null}">Pays non renseigné</span>

@@ -24,7 +24,7 @@ public class AthleteController {
 
 
     @Autowired
-    private AthleteService athleteservice;
+    private AthleteService athleteService;
 
     @Autowired
     private PaysService paysService;
@@ -37,7 +37,7 @@ public class AthleteController {
 
     @GetMapping("/")
     public String home(Model model) {
-        Iterable<Athlete> listAthletes = athleteservice.getAthletes();
+        Iterable<Athlete> listAthletes = athleteService.getAthletes();
         model.addAttribute("athletes", listAthletes);
         return "home";
     }
@@ -58,7 +58,7 @@ public class AthleteController {
 
     @GetMapping("/updateAthlete/{id}")
     public String updateAthlete(@PathVariable("id") final int id, Model model) {
-        Athlete a = athleteservice.getAthlete(id);
+        Athlete a = athleteService.getAthlete(id);
         model.addAttribute("athlete", a);
 
         Iterable<Pays> listPays = paysService.getLesPays();
@@ -72,18 +72,14 @@ public class AthleteController {
 
     @GetMapping("/deleteAthlete/{id}")
     public ModelAndView deleteAthlete(@PathVariable("id") final int id) {
-        athleteservice.deleteAthlete(id);
+        athleteService.deleteAthlete(id);
         return new ModelAndView("redirect:/");
     }
 
     @PostMapping("/saveAthlete")
     public ModelAndView saveAthlete(@ModelAttribute Athlete athlete) {
         System.out.println("controller save=" + athlete.getNom());
-        if(athlete.getId() != null) {
-            Athlete current = athleteservice.getAthlete(athlete.getId());
-            athlete.setNom(current.getNom());
-        }
-        athleteservice.saveAthlete(athlete);
+        athleteService.saveAthlete(athlete);
         return new ModelAndView("redirect:/");
     }
 }

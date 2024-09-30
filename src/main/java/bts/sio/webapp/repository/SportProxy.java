@@ -19,13 +19,13 @@ public class SportProxy {
     private CustomProperties props;
 
     /**
-     * Get all athletes
-     * @return An iterable of all athlete
+     * Get all sports
+     * @return An iterable of all sport
      */
     public Iterable<Sport> getSports() {
 
         String baseApiUrl = props.getApiUrl();
-        String getSportsUrl = baseApiUrl + "/athletes";
+        String getSportsUrl = baseApiUrl + "/sports";
         System.out.println("url=" + getSportsUrl);
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Sport>> response = restTemplate.exchange(
@@ -41,13 +41,13 @@ public class SportProxy {
     }
 
     /**
-     * Get an athlete by the id
-     * @param id The id of the athlete
-     * @return The athlete which matches the id
+     * Get an sport by the id
+     * @param id The id of the sport
+     * @return The sport which matches the id
      */
     public Sport getSport(int id) {
         String baseApiUrl = props.getApiUrl();
-        String getEmployeeUrl = baseApiUrl + "/athlete/" + id;
+        String getEmployeeUrl = baseApiUrl + "/sport/" + id;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Sport> response = restTemplate.exchange(
@@ -63,14 +63,14 @@ public class SportProxy {
     }
 
     /**
-     * Add a new athlete
-     * @param a A new athlete (without an id)
-     * @return The athlete full filled (with an id)
+     * Add a new sport
+     * @param a A new sport (without an id)
+     * @return The sport full filled (with an id)
      */
     public Sport createSport(Sport a) {
 
         String baseApiUrl = props.getApiUrl();
-        String createSportUrl = baseApiUrl + "/athlete";
+        String createSportUrl = baseApiUrl + "/sport";
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Sport> request = new HttpEntity<Sport>(a);
@@ -86,12 +86,12 @@ public class SportProxy {
     }
 
     /**
-     * Update an athlete - using the PUT HTTP Method.
-     * @param e Existing athlete to update
+     * Update an sport - using the PUT HTTP Method.
+     * @param e Existing sport to update
      */
     public Sport updateSport(Sport e) {
         String baseApiUrl = props.getApiUrl();
-        String updateSportUrl = baseApiUrl + "/athlete/" + e.getId();
+        String updateSportUrl = baseApiUrl + "/sport/" + e.getId();
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Sport> request = new HttpEntity<Sport>(e);
@@ -107,13 +107,13 @@ public class SportProxy {
     }
 
     /*
-     * Delete an athlete using exchange method of RestTemplate
+     * Delete an sport using exchange method of RestTemplate
      * instead of delete method in order to log the response status code.
-     * @param e The athlete to delete
+     * @param e The sport to delete
      */
     public void deleteSport(int id) {
         String baseApiUrl = props.getApiUrl();
-        String deleteSportUrl = baseApiUrl + "/athlete/" + id;
+        String deleteSportUrl = baseApiUrl + "/sport/" + id;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Void> response = restTemplate.exchange(

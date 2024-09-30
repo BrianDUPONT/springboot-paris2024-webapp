@@ -47,7 +47,7 @@ public class SportController {
     @GetMapping("/deleteSport/{id}")
     public ModelAndView deleteSport(@PathVariable("id") final int id) {
         sportService.deleteSport(id);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/listerSports");
     }
 
     @PostMapping("/saveSport")

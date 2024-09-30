@@ -33,7 +33,7 @@ public class AthleteController {
     private SportService sportService;
 
     @Autowired
-    private SportService olympiadeService;
+    private OlympiadeService olympiadeService;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -50,6 +50,9 @@ public class AthleteController {
         Iterable<Pays> listPays = paysService.getLesPays();
         model.addAttribute("listPays", listPays);
 
+        Iterable<Sport> listSport = sportService.getLesSports();
+        model.addAttribute("listSport", listSport);
+
         return "athlete/formNewAthlete";
     }
 
@@ -57,6 +60,13 @@ public class AthleteController {
     public String updateAthlete(@PathVariable("id") final int id, Model model) {
         Athlete a = athleteservice.getAthlete(id);
         model.addAttribute("athlete", a);
+
+        Iterable<Pays> listPays = paysService.getLesPays();
+        model.addAttribute("listPays", listPays);
+
+        Iterable<Sport> listSport = sportService.getLesSports();
+        model.addAttribute("listSport", listSport);
+
         return "athlete/formUpdateAthlete";
     }
 

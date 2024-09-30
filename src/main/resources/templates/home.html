@@ -67,9 +67,10 @@
 							<span th:if="${athlete.pays == null}">Pays non renseigné</span>
 						</td>
 						<td>
-							<span th:if="${athlete.sport != null}" th:text="${athlete.pays.nom}"></span>
+							<span th:if="${athlete.sport != null}" th:text="${athlete.sport.nom}"></span>
 							<span th:if="${athlete.sport == null}">Sport non renseigné</span>
-						</td>						<td>
+						</td>
+						<td>
 							<ul class="liste-olympiades" th:each="olympiade : ${athlete.olympiades}">
 								<span><li th:if="${olympiade != null}" th:text="${olympiade.numero}"></li></span>
 								<span th:if="${olympiade == null}">Olympiade non renseigné</span>

@@ -73,6 +73,9 @@
 
                 <td>
                     <ul class="liste-actions">
+                        <a th:href="@{/actualite/consulterActualite/{id}(id=${actualite.id})}">
+                            <button class="btn btn-primary">Consulter</button>
+                        </a>
                         <a th:href="@{/updateActualite/{id}(id=${actualite.id})}"><button class="btn btn-info">Modifier</button></a>
                         <a th:href="@{/deleteActualite/{id}(id=${actualite.id})}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette actualité ?');">
                             <button class="btn btn-danger">Supprimer</button>

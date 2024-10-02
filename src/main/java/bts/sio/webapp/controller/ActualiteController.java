@@ -43,10 +43,22 @@ public class ActualiteController {
         return new ModelAndView("redirect:/listerActualites");
     }
 
+
+    @GetMapping("actualite/consulterActualite/{id}")
+    public String consulterActualite(@PathVariable int id, Model model) {
+        Actualite actualite = actualiteService.getActualite(id);
+
+        model.addAttribute("actualite", actualite);
+
+        return "actualite/consulterActualite";
+    }
+
     @PostMapping("/saveActualite")
     public ModelAndView saveActualite(@ModelAttribute Actualite actualite) {
         System.out.println("controller save=" + actualite.getTitre());
         actualiteService.saveActualite(actualite);
         return new ModelAndView("redirect:/listerActualites");
     }
+
+
 }

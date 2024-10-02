@@ -1,6 +1,7 @@
 package bts.sio.webapp.controller;
 
 import bts.sio.webapp.model.Actualite;
+import bts.sio.webapp.model.Athlete;
 import bts.sio.webapp.model.Epreuve;
 import bts.sio.webapp.model.Sport;
 import bts.sio.webapp.service.ActualiteService;
@@ -53,12 +54,25 @@ public class ActualiteController {
         return "actualite/consulterActualite";
     }
 
+    @GetMapping("/createActualite")
+    public String createActualite(Model model) {
+        Actualite a = new Actualite();
+        model.addAttribute("actualite", a);
+
+        Iterable<Epreuve> listEpreuve = epreuveService.getLesEpreuves();
+        model.addAttribute("listEpreuve", listEpreuve);
+
+        Iterable<Sport> listSport = sportService.getLesSports();
+        model.addAttribute("listSport", listSport);
+
+        return "actualite/formNewActualite";
+    }
+
     @PostMapping("/saveActualite")
     public ModelAndView saveActualite(@ModelAttribute Actualite actualite) {
         System.out.println("controller save=" + actualite.getTitre());
         actualiteService.saveActualite(actualite);
         return new ModelAndView("redirect:/listerActualites");
     }
-
 
 }

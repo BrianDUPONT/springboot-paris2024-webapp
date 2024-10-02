@@ -30,51 +30,23 @@ public class ActualiteController {
     @Autowired
     private SportService sportService;
 
-    @GetMapping("/")
-    public String home(Model model) {
+    @GetMapping("/listerActualites")
+    public String listerActualites(Model model) {
         Iterable<Actualite> listActualites = actualiteService.getActualites();
         model.addAttribute("actualites", listActualites);
-        return "home";
-    }
-
-    @GetMapping("/createActualite")
-    public String createActualite(Model model) {
-        Actualite a = new Actualite();
-        model.addAttribute("actualite", a);
-
-        Iterable<Epreuve> listEpreuve = epreuveService.getLesEpreuves();
-        model.addAttribute("listPays", listEpreuve);
-
-        Iterable<Sport> listSport = sportService.getLesSports();
-        model.addAttribute("listSport", listSport);
-
-        return "actualite/formNewActualite";
-    }
-
-    @GetMapping("/updateActualite/{id}")
-    public String updateActualite(@PathVariable("id") final int id, Model model) {
-        Actualite a = actualiteService.getActualite(id);
-        model.addAttribute("actualite", a);
-
-        Iterable<Epreuve> listEpreuve = epreuveService.getLesEpreuves();
-        model.addAttribute("listPays", listEpreuve);
-
-        Iterable<Sport> listSport = sportService.getLesSports();
-        model.addAttribute("listSport", listSport);
-
-        return "actualite/formUpdateActualite";
+        return "listerActualites";
     }
 
     @GetMapping("/deleteActualite/{id}")
     public ModelAndView deleteActualite(@PathVariable("id") final int id) {
         actualiteService.deleteActualite(id);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/listerActualites");
     }
 
     @PostMapping("/saveActualite")
     public ModelAndView saveActualite(@ModelAttribute Actualite actualite) {
         System.out.println("controller save=" + actualite.getTitre());
         actualiteService.saveActualite(actualite);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/listerActualites");
     }
 }

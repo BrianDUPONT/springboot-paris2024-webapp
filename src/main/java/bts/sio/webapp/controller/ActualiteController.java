@@ -68,6 +68,20 @@ public class ActualiteController {
         return "actualite/formNewActualite";
     }
 
+    @GetMapping("/updateActualite/{id}")
+    public String updateActualite(@PathVariable("id") final int id, Model model) {
+        Actualite a = actualiteService.getActualite(id);
+        model.addAttribute("actualite", a);
+
+        Iterable<Epreuve> listEpreuve = epreuveService.getLesEpreuves();
+        model.addAttribute("listEpreuve", listEpreuve);
+
+        Iterable<Sport> listSport = sportService.getLesSports();
+        model.addAttribute("listSport", listSport);
+
+        return "actualite/formUpdateActualite";
+    }
+
     @PostMapping("/saveActualite")
     public ModelAndView saveActualite(@ModelAttribute Actualite actualite) {
         System.out.println("controller save=" + actualite.getTitre());

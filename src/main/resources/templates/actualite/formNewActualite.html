@@ -51,14 +51,14 @@ body {
 					<label for="titreInput">Titre</label>
 					<input
 						type="text" th:field="*{titre}" class="form-control" id="titreInput"
-						aria-describedby="titreHelp" placeholder="Saisir le titre"> <small
+						aria-describedby="titreHelp" placeholder="Saisir le titre" required> <small
 						id="titreHelp" class="form-text text-muted">Merci d'écrire le titre de l'actualité.</small>
 				</div>
 				<div class="form-group">
 					<label for="contenuInput">Contenu</label>
 					<input
 						type="text" th:field="*{contenu}" class="form-control" id="contenuInput"
-						aria-describedby="contenuHelp" placeholder="Saisir le contenu"> <small
+						aria-describedby="contenuHelp" placeholder="Saisir le contenu" required> <small
 						id="contenuHelp" class="form-text text-muted">Merci d'écrire le contenu de l'actualité.</small>
 				</div>
 
@@ -66,13 +66,13 @@ body {
 					<label for="dateInput">Date de l'actualité</label>
 					<input
 							type="date" th:field="*{date}" class="form-control" id="dateInput"
-							aria-describedby="dateHelp" placeholder="Saisir la date de naissance"> <small
+							aria-describedby="dateHelp" placeholder="Saisir la date de naissance" required> <small
 						id="dateHelp" class="form-text text-muted">Merci de renseigner la date de l'actualité.</small>
 				</div>
 
 				<div class="form-group">
 					<label for="epreuveInput">Epreuve :</label>
-					<select id="epreuveInput" class="form-control" th:field="*{epreuve.id}">
+					<select id="epreuveInput" class="form-control" th:field="*{epreuve.id}" required>
 						<option value="">Sélectionnez une épreuve</option>
 						<option th:each="epreuve : ${listEpreuve}" th:value="${epreuve.id}" th:text="${epreuve.nom}"></option>
 					</select>
@@ -80,7 +80,7 @@ body {
 
 				<div class="form-group">
 					<label for="sportInput">Sport :</label>
-					<select id="sportInput" class="form-control" th:field="*{sport.id}">
+					<select id="sportInput" class="form-control" th:field="*{sport.id}" required>
 						<option value="">Sélectionnez un sport</option>
 						<option th:each="sport : ${listSport}" th:value="${sport.id}" th:text="${sport.nom}"></option>
 					</select>
